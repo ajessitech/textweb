@@ -159,12 +159,21 @@ export default function ArcherWebsite() {
           }
         }
 
-        .animate-marquee {
-          animation: marquee 20s linear infinite;
+        @keyframes marquee-reverse {
+          0% {
+            transform: translateX(-50%);
+          }
+          100% {
+            transform: translateX(0);
+          }
         }
 
-        .animate-marquee:hover {
-          animation-play-state: paused;
+        .animate-marquee {
+          animation: marquee 30s linear infinite;
+        }
+
+        .animate-marquee-reverse {
+          animation: marquee-reverse 30s linear infinite;
         }
       `}</style>
 
@@ -192,7 +201,12 @@ export default function ArcherWebsite() {
           </div>
           <Button 
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="bg-[#000000] hover:bg-[#333333] text-white font-medium px-6 sm:px-8 py-3 rounded-lg text-base inline-flex items-center justify-center transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50"
+            className="bg-[#000000] hover:bg-[#333333] text-white px-6 sm:px-8 py-3 rounded-lg inline-flex items-center justify-center transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50"
+            style={{
+              fontFamily: 'var(--font-geist-sans), sans-serif',
+              letterSpacing: '-0.04em',
+              fontWeight: 500
+            }}
           >
             Book a Demo
           </Button>
@@ -200,7 +214,7 @@ export default function ArcherWebsite() {
       </header>
 
       {/* Hero Section */}
-      <section className="max-w-4xl mx-auto px-4 py-12 sm:px-6 sm:py-16 lg:py-32 text-left sm:text-center">
+      <section className="max-w-4xl mx-auto px-4 py-6 sm:px-6 sm:py-8 lg:py-16 text-left sm:text-center">
         <p 
           style={{
             '--font-selector': 'R0Y7R2Vpc3QtNTAw',
@@ -221,7 +235,7 @@ export default function ArcherWebsite() {
           } as unknown as React.CSSProperties}
           className="framer-text mb-4 sm:mb-6 hero-heading-mobile"
         >
-          Archer is a copilot for <br className="framer-text" />fast-moving credit teams.
+          Archer is copilot for <br className="framer-text" />fast-moving credit teams.
         </p>
         <p 
           style={{
@@ -252,7 +266,13 @@ export default function ArcherWebsite() {
             </div>
             <button
               onClick={() => setIsSubmitted(false)}
-              className="text-gray-500 text-sm underline hover:text-gray-700"
+              className="text-gray-500 underline hover:text-gray-700"
+              style={{
+                fontFamily: 'var(--font-geist-sans), sans-serif',
+                letterSpacing: '-0.04em',
+                fontSize: '14px',
+                fontWeight: 400
+              }}
             >
               Submit another email
             </button>
@@ -273,7 +293,12 @@ export default function ArcherWebsite() {
             <Button
               type="submit"
               disabled={isSubmitting}
-              className="bg-[#000000] hover:bg-[#333333] text-white font-medium px-6 sm:px-8 py-3 rounded-lg text-base inline-flex items-center justify-center transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50"
+              className="bg-[#000000] hover:bg-[#333333] text-white px-6 sm:px-8 py-3 rounded-lg inline-flex items-center justify-center transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50"
+              style={{
+                fontFamily: 'var(--font-geist-sans), sans-serif',
+                letterSpacing: '-0.04em',
+                fontWeight: 500
+              }}
             >
               {isSubmitting ? 'Submitting...' : 'Book a Demo'}
             </Button>
@@ -286,7 +311,7 @@ export default function ArcherWebsite() {
         <div className="rounded-xl sm:rounded-2xl overflow-hidden shadow-xl sm:shadow-2xl">
           <Image
             src="/hero.png"
-            alt="Archer product demo showing Figma integration"
+            alt="Archer product demo showing credit memo generation"
             width={1200}
             height={800}
             className="w-full h-auto"
@@ -294,39 +319,183 @@ export default function ArcherWebsite() {
         </div>
       </section>
 
+
       {/* Company Logos - Marquee */}
-      <section className="max-w-6xl mx-auto px-4 sm:px-6 mb-20 sm:mb-32">
-        <p className="text-center text-gray-500 text-sm mb-8 sm:mb-12">Credit teams who felt Archer's need</p>
-        <div className="relative overflow-hidden">
-          <div className="flex animate-marquee space-x-12 sm:space-x-16 lg:space-x-20">
+      <section className="max-w-6xl mx-auto px-4 sm:px-6 mb-12 sm:mb-16">
+        <p className="text-center text-gray-500 text-base sm:text-lg mb-8 sm:mb-12 pt-8 sm:pt-12">Designed to seamlessly integrate with your systems</p>
+        
+        {/* First Row - Left to Right */}
+        <div className="relative overflow-hidden mb-12 sm:mb-16">
+          <div className="flex animate-marquee space-x-8 sm:space-x-12">
             {/* First set of logos */}
-            <div className="flex items-center space-x-12 sm:space-x-16 lg:space-x-20 opacity-60 flex-shrink-0">
-              <Image src="https://ext.same-assets.com/1375812091/2759214492.png" alt="Microsoft" width={120} height={40} className="h-6 sm:h-8 w-auto" />
-              <Image src="https://ext.same-assets.com/1375812091/3770437404.png" alt="Slack" width={120} height={40} className="h-6 sm:h-8 w-auto" />
-              <Image src="https://ext.same-assets.com/1375812091/1259129438.png" alt="Intuit" width={120} height={40} className="h-6 sm:h-8 w-auto" />
-              <Image src="https://ext.same-assets.com/1375812091/442172929.png" alt="ClickUp" width={120} height={40} className="h-6 sm:h-8 w-auto" />
+            <div className="flex items-center space-x-8 sm:space-x-12 opacity-60 flex-shrink-0">
+              <div className="w-24 sm:w-32 h-10 sm:h-12 flex items-center justify-center">
+                <Image src="/marquee-logos/Creditsafe_Logo.svg.png" alt="Creditsafe" width={120} height={48} className="max-h-full w-auto object-contain grayscale" />
+              </div>
+              <div className="w-24 sm:w-32 h-10 sm:h-12 flex items-center justify-center">
+                <Image src="/marquee-logos/Dropbox_(service)-Icon-Logo.wine.svg" alt="Dropbox" width={120} height={48} className="max-h-full w-auto object-contain grayscale" />
+              </div>
+              <div className="w-24 sm:w-32 h-10 sm:h-12 flex items-center justify-center">
+                <Image src="/marquee-logos/Experian_logo.svg.png" alt="Experian" width={120} height={48} className="max-h-full w-auto object-contain grayscale" />
+              </div>
+              <div className="w-24 sm:w-32 h-10 sm:h-12 flex items-center justify-center">
+                <Image src="/marquee-logos/Gmail-Logo-2013.png" alt="Gmail" width={120} height={48} className="max-h-full w-auto object-contain grayscale" />
+              </div>
+              <div className="w-24 sm:w-32 h-10 sm:h-12 flex items-center justify-center">
+                <Image src="/marquee-logos/google-drive-icon-google-product-illustration-free-png.webp" alt="Google Drive" width={120} height={48} className="max-h-full w-auto object-contain grayscale" />
+              </div>
+              <div className="w-24 sm:w-32 h-10 sm:h-12 flex items-center justify-center">
+                <Image src="/marquee-logos/Jack-henry-logo.svg.png" alt="Jack Henry" width={120} height={48} className="max-h-full w-auto object-contain grayscale" />
+              </div>
+              <div className="w-24 sm:w-32 h-10 sm:h-12 flex items-center justify-center">
+                <Image src="/marquee-logos/MarineTraffic_logo.jpg" alt="MarineTraffic" width={120} height={48} className="max-h-full w-auto object-contain grayscale" />
+              </div>
+              <div className="w-24 sm:w-32 h-10 sm:h-12 flex items-center justify-center">
+                <Image src="/marquee-logos/Microsoft_Excel-Logo.wine.svg" alt="Microsoft Excel" width={120} height={48} className="max-h-full w-auto object-contain grayscale" />
+              </div>
+              <div className="w-24 sm:w-32 h-10 sm:h-12 flex items-center justify-center">
+                <Image src="/marquee-logos/MX-logo-black-1.png" alt="MX" width={120} height={48} className="max-h-full w-auto object-contain grayscale" />
+              </div>
+              <div className="w-24 sm:w-32 h-10 sm:h-12 flex items-center justify-center">
+                <Image src="/marquee-logos/oraclelogo.jpg" alt="Oracle" width={120} height={48} className="max-h-full w-auto object-contain grayscale" />
+              </div>
             </div>
             {/* Duplicate set for seamless loop */}
-            <div className="flex items-center space-x-12 sm:space-x-16 lg:space-x-20 opacity-60 flex-shrink-0">
-              <Image src="https://ext.same-assets.com/1375812091/2759214492.png" alt="Microsoft" width={120} height={40} className="h-6 sm:h-8 w-auto" />
-              <Image src="https://ext.same-assets.com/1375812091/3770437404.png" alt="Slack" width={120} height={40} className="h-6 sm:h-8 w-auto" />
-              <Image src="https://ext.same-assets.com/1375812091/1259129438.png" alt="Intuit" width={120} height={40} className="h-6 sm:h-8 w-auto" />
-              <Image src="https://ext.same-assets.com/1375812091/442172929.png" alt="ClickUp" width={120} height={40} className="h-6 sm:h-8 w-auto" />
+            <div className="flex items-center space-x-8 sm:space-x-12 opacity-60 flex-shrink-0">
+              <div className="w-24 sm:w-32 h-10 sm:h-12 flex items-center justify-center">
+                <Image src="/marquee-logos/Creditsafe_Logo.svg.png" alt="Creditsafe" width={120} height={48} className="max-h-full w-auto object-contain grayscale" />
+              </div>
+              <div className="w-24 sm:w-32 h-10 sm:h-12 flex items-center justify-center">
+                <Image src="/marquee-logos/Dropbox_(service)-Icon-Logo.wine.svg" alt="Dropbox" width={120} height={48} className="max-h-full w-auto object-contain grayscale" />
+              </div>
+              <div className="w-24 sm:w-32 h-10 sm:h-12 flex items-center justify-center">
+                <Image src="/marquee-logos/Experian_logo.svg.png" alt="Experian" width={120} height={48} className="max-h-full w-auto object-contain grayscale" />
+              </div>
+              <div className="w-24 sm:w-32 h-10 sm:h-12 flex items-center justify-center">
+                <Image src="/marquee-logos/Gmail-Logo-2013.png" alt="Gmail" width={120} height={48} className="max-h-full w-auto object-contain grayscale" />
+              </div>
+              <div className="w-24 sm:w-32 h-10 sm:h-12 flex items-center justify-center">
+                <Image src="/marquee-logos/google-drive-icon-google-product-illustration-free-png.webp" alt="Google Drive" width={120} height={48} className="max-h-full w-auto object-contain grayscale" />
+              </div>
+              <div className="w-24 sm:w-32 h-10 sm:h-12 flex items-center justify-center">
+                <Image src="/marquee-logos/Jack-henry-logo.svg.png" alt="Jack Henry" width={120} height={48} className="max-h-full w-auto object-contain grayscale" />
+              </div>
+              <div className="w-24 sm:w-32 h-10 sm:h-12 flex items-center justify-center">
+                <Image src="/marquee-logos/MarineTraffic_logo.jpg" alt="MarineTraffic" width={120} height={48} className="max-h-full w-auto object-contain grayscale" />
+              </div>
+              <div className="w-24 sm:w-32 h-10 sm:h-12 flex items-center justify-center">
+                <Image src="/marquee-logos/Microsoft_Excel-Logo.wine.svg" alt="Microsoft Excel" width={120} height={48} className="max-h-full w-auto object-contain grayscale" />
+              </div>
+              <div className="w-24 sm:w-32 h-10 sm:h-12 flex items-center justify-center">
+                <Image src="/marquee-logos/MX-logo-black-1.png" alt="MX" width={120} height={48} className="max-h-full w-auto object-contain grayscale" />
+              </div>
+              <div className="w-24 sm:w-32 h-10 sm:h-12 flex items-center justify-center">
+                <Image src="/marquee-logos/oraclelogo.jpg" alt="Oracle" width={120} height={48} className="max-h-full w-auto object-contain grayscale" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Second Row - Right to Left */}
+        <div className="relative overflow-hidden">
+          <div className="flex animate-marquee-reverse space-x-8 sm:space-x-12">
+            {/* First set of logos */}
+            <div className="flex items-center space-x-8 sm:space-x-12 opacity-60 flex-shrink-0">
+              <div className="w-24 sm:w-32 h-10 sm:h-12 flex items-center justify-center">
+                <Image src="/marquee-logos/Plaid-logo.png" alt="Plaid" width={120} height={48} className="max-h-full w-auto object-contain grayscale" />
+              </div>
+              <div className="w-24 sm:w-32 h-10 sm:h-12 flex items-center justify-center">
+                <Image src="/marquee-logos/quickbooks-brand-preferred-logo-50-50-black-external.png" alt="QuickBooks" width={120} height={48} className="max-h-full w-auto object-contain grayscale" />
+              </div>
+              <div className="w-24 sm:w-32 h-10 sm:h-12 flex items-center justify-center">
+                <Image src="/marquee-logos/Salesforce.com_logo.svg.webp" alt="Salesforce" width={120} height={48} className="max-h-full w-auto object-contain grayscale" />
+              </div>
+              <div className="w-24 sm:w-32 h-10 sm:h-12 flex items-center justify-center">
+                <Image src="/marquee-logos/SharePoint-logo1.png" alt="SharePoint" width={120} height={48} className="max-h-full w-auto object-contain grayscale" />
+              </div>
+              <div className="w-24 sm:w-32 h-10 sm:h-12 flex items-center justify-center">
+                <Image src="/marquee-logos/Shipsgo_idH2s6vbMX_1.svg" alt="Shipsgo" width={120} height={48} className="max-h-full w-auto object-contain grayscale" />
+              </div>
+              <div className="w-24 sm:w-32 h-10 sm:h-12 flex items-center justify-center">
+                <Image src="/marquee-logos/sp-global-logo-png_seeklogo-344551.png" alt="S&P Global" width={120} height={48} className="max-h-full w-auto object-contain grayscale" />
+              </div>
+              <div className="w-24 sm:w-32 h-10 sm:h-12 flex items-center justify-center">
+                <Image src="/marquee-logos/Stripe_Logo,_revised_2016.svg.png" alt="Stripe" width={120} height={48} className="max-h-full w-auto object-contain grayscale" />
+              </div>
+              <div className="w-24 sm:w-32 h-10 sm:h-12 flex items-center justify-center">
+                <Image src="/marquee-logos/SWIFT_2021_logo.svg.png" alt="SWIFT" width={120} height={48} className="max-h-full w-auto object-contain grayscale" />
+              </div>
+              <div className="w-24 sm:w-32 h-10 sm:h-12 flex items-center justify-center">
+                <Image src="/marquee-logos/images.png" alt="Logo" width={120} height={48} className="max-h-full w-auto object-contain grayscale" />
+              </div>
+            </div>
+            {/* Duplicate set for seamless loop */}
+            <div className="flex items-center space-x-8 sm:space-x-12 opacity-60 flex-shrink-0">
+              <div className="w-24 sm:w-32 h-10 sm:h-12 flex items-center justify-center">
+                <Image src="/marquee-logos/Plaid-logo.png" alt="Plaid" width={120} height={48} className="max-h-full w-auto object-contain grayscale" />
+              </div>
+              <div className="w-24 sm:w-32 h-10 sm:h-12 flex items-center justify-center">
+                <Image src="/marquee-logos/quickbooks-brand-preferred-logo-50-50-black-external.png" alt="QuickBooks" width={120} height={48} className="max-h-full w-auto object-contain grayscale" />
+              </div>
+              <div className="w-24 sm:w-32 h-10 sm:h-12 flex items-center justify-center">
+                <Image src="/marquee-logos/Salesforce.com_logo.svg.webp" alt="Salesforce" width={120} height={48} className="max-h-full w-auto object-contain grayscale" />
+              </div>
+              <div className="w-24 sm:w-32 h-10 sm:h-12 flex items-center justify-center">
+                <Image src="/marquee-logos/SharePoint-logo1.png" alt="SharePoint" width={120} height={48} className="max-h-full w-auto object-contain grayscale" />
+              </div>
+              <div className="w-24 sm:w-32 h-10 sm:h-12 flex items-center justify-center">
+                <Image src="/marquee-logos/Shipsgo_idH2s6vbMX_1.svg" alt="Shipsgo" width={120} height={48} className="max-h-full w-auto object-contain grayscale" />
+              </div>
+              <div className="w-24 sm:w-32 h-10 sm:h-12 flex items-center justify-center">
+                <Image src="/marquee-logos/sp-global-logo-png_seeklogo-344551.png" alt="S&P Global" width={120} height={48} className="max-h-full w-auto object-contain grayscale" />
+              </div>
+              <div className="w-24 sm:w-32 h-10 sm:h-12 flex items-center justify-center">
+                <Image src="/marquee-logos/Stripe_Logo,_revised_2016.svg.png" alt="Stripe" width={120} height={48} className="max-h-full w-auto object-contain grayscale" />
+              </div>
+              <div className="w-24 sm:w-32 h-10 sm:h-12 flex items-center justify-center">
+                <Image src="/marquee-logos/SWIFT_2021_logo.svg.png" alt="SWIFT" width={120} height={48} className="max-h-full w-auto object-contain grayscale" />
+              </div>
+              <div className="w-24 sm:w-32 h-10 sm:h-12 flex items-center justify-center">
+                <Image src="/marquee-logos/images.png" alt="Logo" width={120} height={48} className="max-h-full w-auto object-contain grayscale" />
+              </div>
             </div>
           </div>
         </div>
       </section>
 
+
+
       {/* Designed for Designers Section */}
       <section className="max-w-6xl mx-auto px-4 sm:px-6 py-12 sm:py-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center mb-12 sm:mb-16">
           <div>
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 leading-tight">
+            <h2 style={{
+              fontFamily: '"Geist", "Geist Placeholder", sans-serif',
+              fontSize: '40px',
+              fontWeight: 500,
+              letterSpacing: '-0.04em',
+              lineHeight: '130%',
+              color: 'rgb(39, 39, 39)'
+            }}>
               Designed for Lenders<br />Who Move Fast
             </h2>
           </div>
           <div>
-            <p className="text-base sm:text-lg text-gray-600 leading-relaxed">
+            <p style={{
+              '--font-selector': 'R0Y7R2Vpc3QtNTAw',
+              '--framer-font-family': '"Geist", "Geist Placeholder", sans-serif',
+              '--framer-font-size': '18px',
+              '--framer-font-weight': '500',
+              '--framer-letter-spacing': '-0.04em',
+              '--framer-line-height': '130%',
+              '--framer-text-color': 'rgb(39, 39, 39)',
+              fontFamily: '"Geist", "Geist Placeholder", sans-serif',
+              fontSize: '18px',
+              fontWeight: 500,
+              letterSpacing: '-0.04em',
+              lineHeight: '130%',
+              color: 'rgb(39, 39, 39)'
+            } as React.CSSProperties}>
               Archer integrates directly with your workflow to eliminate manual work, speed up diligence,
               and support better credit decisions—without increasing risk.
             </p>
@@ -347,8 +516,29 @@ export default function ArcherWebsite() {
               />
             </div>
             <div className="px-2">
-              <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-2 sm:mb-3">Ingest Entire Data Rooms</h3>
-              <p className="text-gray-600 text-sm sm:text-base leading-relaxed">
+              <h3 style={{
+                fontFamily: 'var(--font-geist-sans), sans-serif',
+                letterSpacing: '-0.04em',
+                fontSize: '20px',
+                fontWeight: 500,
+                color: 'rgb(39, 39, 39)',
+                marginBottom: '0.75rem'
+              }}>Ingest Entire Data Rooms</h3>
+              <p style={{
+                '--font-selector': 'R0Y7R2Vpc3QtNTAw',
+                '--framer-font-family': '"Geist", "Geist Placeholder", sans-serif',
+                '--framer-font-size': '18px',
+                '--framer-font-weight': '500',
+                '--framer-letter-spacing': '-0.04em',
+                '--framer-line-height': '130%',
+                '--framer-text-color': 'rgb(39, 39, 39)',
+                fontFamily: '"Geist", "Geist Placeholder", sans-serif',
+                fontSize: '18px',
+                fontWeight: 500,
+                letterSpacing: '-0.04em',
+                lineHeight: '130%',
+                color: 'rgb(39, 39, 39)'
+              } as React.CSSProperties}>
                 Archer understands your source documents. You can drag and drop PDFs,
                 spreadsheets, and emails to start your analysis instantly.
               </p>
@@ -367,8 +557,29 @@ export default function ArcherWebsite() {
               />
             </div>
             <div className="px-2">
-              <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-2 sm:mb-3">2x your coverage, half your workload.</h3>
-              <p className="text-gray-600 text-sm sm:text-base leading-relaxed">
+              <h3 style={{
+                fontFamily: 'var(--font-geist-sans), sans-serif',
+                letterSpacing: '-0.04em',
+                fontSize: '20px',
+                fontWeight: 500,
+                color: 'rgb(39, 39, 39)',
+                marginBottom: '0.75rem'
+              }}>2x your coverage, half your workload.</h3>
+              <p style={{
+                '--font-selector': 'R0Y7R2Vpc3QtNTAw',
+                '--framer-font-family': '"Geist", "Geist Placeholder", sans-serif',
+                '--framer-font-size': '18px',
+                '--framer-font-weight': '500',
+                '--framer-letter-spacing': '-0.04em',
+                '--framer-line-height': '130%',
+                '--framer-text-color': 'rgb(39, 39, 39)',
+                fontFamily: '"Geist", "Geist Placeholder", sans-serif',
+                fontSize: '18px',
+                fontWeight: 500,
+                letterSpacing: '-0.04em',
+                lineHeight: '130%',
+                color: 'rgb(39, 39, 39)'
+              } as React.CSSProperties}>
                 Generate IC-ready memos in minutes, not weeks, allowing your team
                 to cover more deals with less manual effort.
               </p>
@@ -387,8 +598,29 @@ export default function ArcherWebsite() {
               />
             </div>
             <div className="px-2">
-              <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-2 sm:mb-3">Adapts to your credit policy</h3>
-              <p className="text-gray-600 text-sm sm:text-base leading-relaxed">
+              <h3 style={{
+                fontFamily: 'var(--font-geist-sans), sans-serif',
+                letterSpacing: '-0.04em',
+                fontSize: '20px',
+                fontWeight: 500,
+                color: 'rgb(39, 39, 39)',
+                marginBottom: '0.75rem'
+              }}>Adapts to your credit policy</h3>
+              <p style={{
+                '--font-selector': 'R0Y7R2Vpc3QtNTAw',
+                '--framer-font-family': '"Geist", "Geist Placeholder", sans-serif',
+                '--framer-font-size': '18px',
+                '--framer-font-weight': '500',
+                '--framer-letter-spacing': '-0.04em',
+                '--framer-line-height': '130%',
+                '--framer-text-color': 'rgb(39, 39, 39)',
+                fontFamily: '"Geist", "Geist Placeholder", sans-serif',
+                fontSize: '18px',
+                fontWeight: 500,
+                letterSpacing: '-0.04em',
+                lineHeight: '130%',
+                color: 'rgb(39, 39, 39)'
+              } as React.CSSProperties}>
                 Archer uses your custom underwriting criteria and credit box
                 to run analysis that stays compliant.
               </p>
@@ -407,8 +639,29 @@ export default function ArcherWebsite() {
               />
             </div>
             <div className="px-2">
-              <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-2 sm:mb-3">No more manual data entry</h3>
-              <p className="text-gray-600 text-sm sm:text-base leading-relaxed">
+              <h3 style={{
+                fontFamily: 'var(--font-geist-sans), sans-serif',
+                letterSpacing: '-0.04em',
+                fontSize: '20px',
+                fontWeight: 500,
+                color: 'rgb(39, 39, 39)',
+                marginBottom: '0.75rem'
+              }}>No more manual data entry</h3>
+              <p style={{
+                '--font-selector': 'R0Y7R2Vpc3QtNTAw',
+                '--framer-font-family': '"Geist", "Geist Placeholder", sans-serif',
+                '--framer-font-size': '18px',
+                '--framer-font-weight': '500',
+                '--framer-letter-spacing': '-0.04em',
+                '--framer-line-height': '130%',
+                '--framer-text-color': 'rgb(39, 39, 39)',
+                fontFamily: '"Geist", "Geist Placeholder", sans-serif',
+                fontSize: '18px',
+                fontWeight: 500,
+                letterSpacing: '-0.04em',
+                lineHeight: '130%',
+                color: 'rgb(39, 39, 39)'
+              } as React.CSSProperties}>
                 Stop spot-checking. Archer processes 100% of borrower data and
                 cites every number back to the source.
               </p>
@@ -421,46 +674,59 @@ export default function ArcherWebsite() {
       <section className="bg-gray-50 py-12 sm:py-20">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-12 sm:mb-16">
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-4 sm:mb-6 px-2">
-              Spreadsheets Weren't Built for Underwriting. <span className="text-[#000000]">Archer Is.</span>
+            <h2 className="text-center mb-4 sm:mb-6 px-2" style={{
+              fontFamily: '"Geist", "Geist Placeholder", sans-serif',
+              fontSize: '40px',
+              fontWeight: 500,
+              letterSpacing: '-0.04em',
+              lineHeight: '130%',
+              color: 'rgb(39, 39, 39)'
+            }}>
+            Make Credit Operations 10x More Efficient
             </h2>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12">
-            {/* ChatGPT Column */}
+            {/* Legacy Underwriting Column */}
             <div className="space-y-6 sm:space-y-8">
               <div className="flex items-center gap-3 sm:gap-4 mb-6 sm:mb-8 px-2">
                 <Image
                   src="/Frame-9.svg"
-                  alt="Legacy Diligence"
+                  alt="Manual Due Diligence"
                   width={40}
                   height={40}
                   className="w-8 h-8 sm:w-10 sm:h-10"
                 />
-                <h3 className="text-xl sm:text-2xl font-bold text-gray-900">Legacy Diligence</h3>
+                <h3 style={{
+                  fontFamily: 'var(--font-geist-sans), sans-serif',
+                  letterSpacing: '-0.04em',
+                  fontSize: '28px',
+                  fontWeight: 500,
+                  color: 'rgb(39, 39, 39)'
+                }}>Legacy Underwriting</h3>
               </div>
 
               <div className="space-y-4 sm:space-y-6">
                 {[
                   {
-                    title: "Relies on sample data, not full picture",
+                    title: "Deals stalled by paperwork",
                     description:
-                      "Forces you to make decisions on incomplete information, leaving you exposed to fraud and errors.",
+                      "Weeks of manual data entry creates pipeline bottlenecks and delays closing your deals.",
                   },
                   {
-                    title: "Prone to human error",
+                    title: "Risky sample-based reviews",
                     description:
-                      "Manual data entry and copy-pasting across documents is slow, tedious, and invites mistakes.",
+                      "Only a fraction of borrower data is ever reviewed, exposing your firm to fraud.",
                   },
                   {
-                    title: "High effort, low context",
+                    title: "Prone to costly errors",
                     description:
-                      "Requires weeks of manual grunt work for a static report with no connection to the source data.",
+                      "Simple data entry mistakes and broken spreadsheets can lead to billion-dollar financial blunders.",
                   },
                   {
-                    title: "Built for cells, not for credit",
+                    title: "Outdated portfolio snapshots",
                     description:
-                      "Helpful for basic calculations, but not usable for comprehensive, auditable credit analysis.",
+                      "Periodic reviews leave you exposed to credit risks that emerge between reporting cycles.",
                   },
                 ].map((item, index) => (
                   <div key={index} className="flex gap-3 sm:gap-4 px-2">
@@ -481,7 +747,21 @@ export default function ArcherWebsite() {
                       <h4 className="font-semibold text-gray-900 mb-1 sm:mb-2 text-sm sm:text-base">
                         {item.title}
                       </h4>
-                      <p className="text-gray-600 text-sm sm:text-base leading-relaxed">
+                      <p style={{
+                '--font-selector': 'R0Y7R2Vpc3QtNTAw',
+                '--framer-font-family': '"Geist", "Geist Placeholder", sans-serif',
+                '--framer-font-size': '18px',
+                '--framer-font-weight': '500',
+                '--framer-letter-spacing': '-0.04em',
+                '--framer-line-height': '130%',
+                '--framer-text-color': 'rgb(39, 39, 39)',
+                fontFamily: '"Geist", "Geist Placeholder", sans-serif',
+                fontSize: '18px',
+                fontWeight: 500,
+                letterSpacing: '-0.04em',
+                lineHeight: '130%',
+                color: 'rgb(39, 39, 39)'
+              } as React.CSSProperties}>
                         {item.description}
                       </p>
                     </div>
@@ -495,16 +775,18 @@ export default function ArcherWebsite() {
               <div className="flex items-center gap-3 sm:gap-4 mb-6 sm:mb-8 px-2">
                 <Image
                   src="/archerlogo.svg"
-                  alt="Archer"
+                  alt="archer"
                   width={40}
                   height={40}
                   className="w-8 h-8 sm:w-10 sm:h-10"
                 />
                 <h3 
-                  className="text-xl sm:text-2xl font-medium text-gray-900"
+                  className="text-gray-900"
                   style={{ 
                     fontFamily: 'var(--font-geist-sans), sans-serif',
-                    letterSpacing: '-0.04em'
+                    letterSpacing: '-0.04em',
+                    fontSize: '28px',
+                    fontWeight: 500
                   }}
                 >
                   archer
@@ -514,24 +796,24 @@ export default function ArcherWebsite() {
               <div className="space-y-4 sm:space-y-6">
                 {[
                   {
-                    title: "Analyzes 100% of borrower data",
+                    title: "Accelerate your underwriting process",
                     description:
-                      "Archer sees the whole picture—every transaction, invoice, and data point is part of the analysis.",
+                      "Instantly ingest entire data rooms to generate IC-ready credit memos in just minutes.",
                   },
                   {
-                    title: "Every number cited to the source",
+                    title: "Analyze every single transaction",
                     description:
-                      "It works with your documents, citing every figure back to its origin. No errors. No black boxes.",
+                      "We process every invoice, bank line, and shipping record—no more sampling, no blind spots.",
                   },
                   {
-                    title: "Minimal input, smart output",
+                    title: "Empower your credit teams",
                     description:
-                      "Give Archer a data room—it responds with a fully drafted, IC-ready memo in minutes.",
+                      "Automating grunt work allows your analysts to evaluate more deals without increasing your headcount.",
                   },
                   {
-                    title: "Designed for credit operations",
+                    title: "Continuous portfolio intelligence",
                     description:
-                      "Archer is built to think in credit, not cells—finally, an AI that speaks underwriting and connects with your data.",
+                      "Sync new borrower data automatically to surface anomalies long before a scheduled field exam.",
                   },
                 ].map((item, index) => (
                   <div key={index} className="flex gap-3 sm:gap-4 px-2">
@@ -552,13 +834,162 @@ export default function ArcherWebsite() {
                       <h4 className="font-semibold text-gray-900 mb-1 sm:mb-2 text-sm sm:text-base">
                         {item.title}
                       </h4>
-                      <p className="text-gray-600 text-sm sm:text-base leading-relaxed">
+                      <p style={{
+                '--font-selector': 'R0Y7R2Vpc3QtNTAw',
+                '--framer-font-family': '"Geist", "Geist Placeholder", sans-serif',
+                '--framer-font-size': '18px',
+                '--framer-font-weight': '500',
+                '--framer-letter-spacing': '-0.04em',
+                '--framer-line-height': '130%',
+                '--framer-text-color': 'rgb(39, 39, 39)',
+                fontFamily: '"Geist", "Geist Placeholder", sans-serif',
+                fontSize: '18px',
+                fontWeight: 500,
+                letterSpacing: '-0.04em',
+                lineHeight: '130%',
+                color: 'rgb(39, 39, 39)'
+              } as React.CSSProperties}>
                         {item.description}
                       </p>
                     </div>
                   </div>
                 ))}
               </div>
+
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Security Section */}
+      <section className="py-12 sm:py-20 bg-gray-50">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6">
+          <div className="text-center mb-12 sm:mb-16">
+            <h2 className="text-center mb-4" style={{
+              fontFamily: '"Geist", "Geist Placeholder", sans-serif',
+              fontSize: '40px',
+              fontWeight: 500,
+              letterSpacing: '-0.04em',
+              lineHeight: '130%',
+              color: 'rgb(39, 39, 39)'
+            }}>
+              Enterprise-grade Security from Day 1
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
+            {/* Your Data Stays Yours */}
+            <div className="bg-white rounded-xl p-6 sm:p-8 shadow-sm">
+              <h3 style={{
+                fontFamily: 'var(--font-geist-sans), sans-serif',
+                letterSpacing: '-0.04em',
+                fontSize: '24px',
+                fontWeight: 500,
+                color: 'rgb(39, 39, 39)',
+                marginBottom: '1.5rem'
+              }}>Your Data Stays Yours</h3>
+              <ul className="space-y-3">
+                <li className="flex items-start">
+                  <svg className="w-5 h-5 text-green-500 mt-0.5 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span className="text-gray-600">Complete data ownership</span>
+                </li>
+                <li className="flex items-start">
+                  <svg className="w-5 h-5 text-green-500 mt-0.5 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span className="text-gray-600">Control over retention periods</span>
+                </li>
+                <li className="flex items-start">
+                  <svg className="w-5 h-5 text-green-500 mt-0.5 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span className="text-gray-600">Manage access permissions</span>
+                </li>
+                <li className="flex items-start">
+                  <svg className="w-5 h-5 text-green-500 mt-0.5 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span className="text-gray-600">No data shared without consent</span>
+                </li>
+              </ul>
+            </div>
+
+            {/* Enterprise-Grade Protection */}
+            <div className="bg-white rounded-xl p-6 sm:p-8 shadow-sm">
+              <h3 style={{
+                fontFamily: 'var(--font-geist-sans), sans-serif',
+                letterSpacing: '-0.04em',
+                fontSize: '24px',
+                fontWeight: 500,
+                color: 'rgb(39, 39, 39)',
+                marginBottom: '1.5rem'
+              }}>Enterprise-Grade Protection</h3>
+              <ul className="space-y-3">
+                <li className="flex items-start">
+                  <svg className="w-5 h-5 text-green-500 mt-0.5 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span className="text-gray-600">256-bit AES encryption</span>
+                </li>
+                <li className="flex items-start">
+                  <svg className="w-5 h-5 text-green-500 mt-0.5 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span className="text-gray-600">Zero-trust security model</span>
+                </li>
+                <li className="flex items-start">
+                  <svg className="w-5 h-5 text-green-500 mt-0.5 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span className="text-gray-600">Role-based access controls</span>
+                </li>
+                <li className="flex items-start">
+                  <svg className="w-5 h-5 text-green-500 mt-0.5 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span className="text-gray-600">Advanced MFA implementation</span>
+                </li>
+              </ul>
+            </div>
+
+            {/* Reliability & Transparency */}
+            <div className="bg-white rounded-xl p-6 sm:p-8 shadow-sm">
+              <h3 style={{
+                fontFamily: 'var(--font-geist-sans), sans-serif',
+                letterSpacing: '-0.04em',
+                fontSize: '24px',
+                fontWeight: 500,
+                color: 'rgb(39, 39, 39)',
+                marginBottom: '1.5rem'
+              }}>Reliability & Transparency</h3>
+              <ul className="space-y-3">
+                <li className="flex items-start">
+                  <svg className="w-5 h-5 text-green-500 mt-0.5 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span className="text-gray-600">Continuous security monitoring</span>
+                </li>
+                <li className="flex items-start">
+                  <svg className="w-5 h-5 text-green-500 mt-0.5 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span className="text-gray-600">Complete audit trails</span>
+                </li>
+                <li className="flex items-start">
+                  <svg className="w-5 h-5 text-green-500 mt-0.5 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span className="text-gray-600">Top-tier cloud infrastructure</span>
+                </li>
+                <li className="flex items-start">
+                  <svg className="w-5 h-5 text-green-500 mt-0.5 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span className="text-gray-600">VPC deployment options</span>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
@@ -568,54 +999,30 @@ export default function ArcherWebsite() {
       <section className="py-12 sm:py-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-12 sm:mb-16">
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-8 sm:mb-12 px-2">
+            <h2 className="text-center mb-8 sm:mb-12 px-2" style={{
+              fontFamily: '"Geist", "Geist Placeholder", sans-serif',
+              fontSize: '40px',
+              fontWeight: 500,
+              letterSpacing: '-0.04em',
+              lineHeight: '130%',
+              color: 'rgb(39, 39, 39)'
+            }}>
               Scale Operations, Not Headcount.
             </h2>
           </div>
 
-          <div className="prose prose-sm sm:prose-lg mx-auto text-gray-600 px-2">
-            <p className="text-gray-500 mb-4 sm:mb-6 text-sm sm:text-base">Dear Lender,</p>
-
-            <p className="mb-4 sm:mb-6 text-sm sm:text-base leading-relaxed">
-              You're juggling deal flow, chasing down data, and racing deadlines.
-              But great underwriting doesn't come from rushing—it comes from <span className="text-[#000000] font-semibold">rigorous diligence</span>.
-              And that's the one thing no one has time for anymore.
-            </p>
-
-            <p className="mb-4 sm:mb-6 text-sm sm:text-base leading-relaxed">
-              As the founding engineer at a fintech that underwrote over $1B in loans, I lived this problem.
-              We saw firsthand how a $100k deal required the same manual effort as a $10M deal.
-              The market pull for a solution was so strong that a prospective customer tried to
-              acquihire our team just to get this built.
-            </p>
-
-            <p className="mb-6 sm:mb-8 text-sm sm:text-base leading-relaxed">
-              That's why I'm building <span className="text-[#000000] font-semibold">Archer</span>—a tool made for credit teams.
-              A tool where AI eliminates the grunt work so you can focus on the <span className="text-[#000000] font-semibold">decisions that matter</span>.
-              Because credit deserves better. And it starts with getting your time back.
-            </p>
-
-            <div className="text-center">
-              <Button 
-                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-                className="bg-[#000000] hover:bg-[#333333] text-white font-medium px-6 sm:px-8 py-3 rounded-lg text-base inline-flex items-center justify-center transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50"
-              >
-                Book a Demo
-              </Button>
-            </div>
-          </div>
-
-          {/* LinkedIn Post Screenshot */}
-          <div className="mt-12 sm:mt-20">
-            <div className="rounded-xl sm:rounded-2xl overflow-hidden shadow-lg sm:shadow-xl">
-              <Image
-                src="https://ext.same-assets.com/1375812091/4201220259.png"
-                alt="LinkedIn post from Siddharth Vij about designing 10x faster"
-                width={800}
-                height={600}
-                className="w-full h-auto"
-              />
-            </div>
+          <div className="text-center">
+            <Button 
+              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              className="bg-[#000000] hover:bg-[#333333] text-white px-12 sm:px-16 py-6 rounded-xl inline-flex items-center justify-center transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50"
+              style={{
+                fontFamily: 'var(--font-geist-sans), sans-serif',
+                letterSpacing: '-0.04em',
+                fontWeight: 500
+              }}
+            >
+              Book a Demo
+            </Button>
           </div>
         </div>
       </section>
