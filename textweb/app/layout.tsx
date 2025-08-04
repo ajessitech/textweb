@@ -6,7 +6,7 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
 export const metadata = {
       title: "archer | AI for Private Credit",
-    description: "Archer is Cursor for fast-moving designers",
+    description: "Archer is Copilot for Credit Operations",
   icons: {
     icon: "/archerlogo.ico",
   },
