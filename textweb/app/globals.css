@@ -1,0 +1,158 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Font Variables */
+:root {
+  --font-geist: "Geist", var(--font-geist-sans), sans-serif;
+  --font-inter: var(--font-inter), "Inter", sans-serif;
+}
+
+/* General Body Style */
+body {
+  background-color: #FAFAFA; /* rgb(250, 250, 250) */
+}
+
+/* Heading Styles */
+.hero-heading {
+  font-family: var(--font-geist);
+  font-size: 68px;
+  font-weight: 500;
+  letter-spacing: -0.04em;
+  line-height: 1.2;
+  text-align: center;
+  color: #272727; /* rgb(39, 39, 39) */
+}
+
+.section-heading {
+  font-family: var(--font-geist);
+  font-size: 40px;
+  font-weight: 500;
+  letter-spacing: -0.04em;
+  line-height: 1.3;
+  text-align: center;
+  color: #272727; /* rgb(39, 39, 39) */
+}
+
+.small-heading {
+  font-family: var(--font-geist);
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: -0.04em;
+  line-height: 1.3;
+  color: #272727; /* rgb(39, 39, 39) */
+}
+
+.extra-small-heading {
+  font-family: var(--font-geist);
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: -0.04em;
+  line-height: 1.3;
+  color: #272727; /* rgb(39, 39, 39) */
+}
+
+/* Paragraph and Body Text Styles */
+.paragraph {
+  font-family: var(--font-geist);
+  font-size: 18px;
+  letter-spacing: -0.03em;
+  line-height: 1.5;
+  text-align: center;
+  color: #5F5F5F; /* rgb(95, 95, 95) */
+}
+
+.feature-description {
+  font-family: var(--font-geist);
+  letter-spacing: -0.02em;
+  line-height: 1.5;
+  color: #5F5F5F; /* rgb(95, 95, 95) */
+}
+
+.logo-subheading {
+  font-family: var(--font-geist);
+  letter-spacing: -0.04em;
+  line-height: 1.3;
+  text-align: center;
+  color: #919191; /* rgb(145, 145, 145) */
+}
+
+.story-text {
+  font-family: var(--font-geist);
+  font-size: 20px;
+  line-height: 1.6;
+  color: #5F5F5F; /* rgb(95, 95, 95) */
+}
+
+/* Button and Link Styles */
+.primary-button-text {
+  font-family: var(--font-geist);
+  font-size: 14px;
+  font-weight: 500;
+  color: #FFFFFF; /* rgb(255, 255, 255) */
+}
+
+.large-cta-button-text {
+  font-family: var(--font-geist);
+  font-size: 56px;
+  font-weight: 500;
+  line-height: 1.2;
+  text-align: center;
+  color: #FFFFFF; /* rgb(255, 255, 255) */
+}
+
+/* Footer Text and Links */
+.footer-text {
+  font-family: var(--font-geist);
+  letter-spacing: -0.01em;
+  line-height: 1.4;
+  color: #242424; /* rgb(36, 36, 36) */
+}
+
+.footer-link {
+  color: #FF4F1A; /* rgb(255, 79, 26) */
+  text-decoration: none; /* The original has no underline */
+}
+
+.designed-by-text {
+  font-family: var(--font-inter);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: -0.4px;
+  line-height: 1.2;
+  color: #1D1F13; /* rgb(29, 31, 19) */
+}
+
+/* Special Highlight Color */
+.highlight-text {
+  color: #FF6431; /* rgb(255, 100, 49) */
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+  .hero-heading {
+    font-size: 48px;
+  }
+  
+  .section-heading {
+    font-size: 32px;
+  }
+  
+  .large-cta-button-text {
+    font-size: 40px;
+  }
+
+  /* Hero section mobile styles */
+  .hero-heading-mobile {
+    --framer-font-size: 48px !important;
+    --framer-text-alignment: left !important;
+    font-size: 48px !important;
+    text-align: left !important;
+  }
+
+  .hero-subheading-mobile {
+    --framer-text-alignment: left !important;
+    text-align: left !important;
+  }
+}
+
