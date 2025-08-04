@@ -285,7 +285,7 @@ export default function ArcherWebsite() {
       <section className="max-w-6xl mx-auto px-4 sm:px-6 mb-12 sm:mb-20">
         <div className="rounded-xl sm:rounded-2xl overflow-hidden shadow-xl sm:shadow-2xl">
           <Image
-            src="https://ext.same-assets.com/1375812091/2943790545.png"
+            src="/hero.png"
             alt="Archer product demo showing Figma integration"
             width={1200}
             height={800}
@@ -339,7 +339,7 @@ export default function ArcherWebsite() {
           <div className="space-y-4 sm:space-y-6">
             <div className="rounded-xl sm:rounded-2xl overflow-hidden">
               <Image
-                src="https://ext.same-assets.com/1375812091/1264722809.png"
+                src="/upload.png"
                 alt="Ingest Entire Data Rooms"
                 width={500}
                 height={400}
@@ -359,7 +359,7 @@ export default function ArcherWebsite() {
           <div className="space-y-4 sm:space-y-6">
             <div className="rounded-xl sm:rounded-2xl overflow-hidden">
               <Image
-                src="https://ext.same-assets.com/1375812091/1541792085.png"
+                src="/memo.png"
                 alt="2x your coverage, half your workload"
                 width={500}
                 height={400}
@@ -379,7 +379,7 @@ export default function ArcherWebsite() {
           <div className="space-y-4 sm:space-y-6">
             <div className="rounded-xl sm:rounded-2xl overflow-hidden">
               <Image
-                src="https://ext.same-assets.com/1375812091/1577920286.png"
+                src="/box.png"
                 alt="Adapts to your credit policy"
                 width={500}
                 height={400}
@@ -399,7 +399,7 @@ export default function ArcherWebsite() {
           <div className="space-y-4 sm:space-y-6">
             <div className="rounded-xl sm:rounded-2xl overflow-hidden">
               <Image
-                src="https://ext.same-assets.com/1375812091/3296064735.png"
+                src="/manual.png"
                 alt="No more manual data entry"
                 width={500}
                 height={400}
